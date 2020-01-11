@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 
-namespace MIS3013Demo
+namespace Program
 {
     public static class ImageHelper
     {
