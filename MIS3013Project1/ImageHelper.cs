@@ -7,7 +7,7 @@ namespace Program
 {
     public static class ImageHelper
     {
-        public static int[][] LoadPixelValuesFromPath(string path, int height, int width)
+        public static int[,] LoadPixelValuesFromPath(string path, int height, int width)
         {
             var image = new Bitmap(path);
             var resized = Resize(image, height, width);
@@ -27,16 +27,15 @@ namespace Program
         /// </summary>
         /// <param name="image">Image to process</param>
         /// <returns></returns>
-        private static int[][] GetLuminanceValues(Bitmap image)
+        private static int[,] GetLuminanceValues(Bitmap image)
         {
-            int[][] pixelValues = new int[image.Width][];
+            int[,] pixelValues = new int[image.Width, image.Height];
             for (var x = 0; x < image.Width; x++)
             {
-                pixelValues[x] = new int[image.Height];
                 for (var y = 0; y < image.Height; y++)
                 {
                     var pixel = image.GetPixel(x, y);
-                    pixelValues[x][y] = (int)((pixel.R * 0.2126) + (pixel.G * 0.7152) + (pixel.B * 0.0722));
+                    pixelValues[x,y] = (int)((pixel.R * 0.2126) + (pixel.G * 0.7152) + (pixel.B * 0.0722));
                 }
             }
 
